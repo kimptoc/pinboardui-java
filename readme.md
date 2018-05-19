@@ -8,7 +8,12 @@ STUFF
 - pure server side/spring mvc & jQuery for now. No react/Vue.js etc!
 
 RUN IT
+- use application.properties to override settings, see template
 mvn spring-boot:run
+
+or
+
+mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=8090 -Dhttp.proxyHost=localhost -Dhttp.proxyPort=8888 -Dpinboard.root.url=http://pb-api.kimptoc.net/ "
 
 TODO
 - take name param to limit link for given tag

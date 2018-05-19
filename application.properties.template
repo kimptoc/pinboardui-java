@@ -1,0 +1,4 @@
+server.port=9000
+http.proxyHost=localhost
+http.proxyPort=8888
+pinboard.root.url=http://pb-api.kimptoc.net/

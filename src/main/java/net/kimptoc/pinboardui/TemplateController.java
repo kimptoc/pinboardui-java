@@ -2,6 +2,7 @@ package net.kimptoc.pinboardui;
 
 import net.kimptoc.pinboard.PinboardApi;
 import net.kimptoc.pinboard.Post;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,8 @@ import java.util.List;
 @Controller
 public class TemplateController {
 
+    @Value("${pinboard.root.url}")
+    private String pinboardRootUrl;
 
     @GetMapping("/pinboard")
     public String pinboard1(
@@ -22,7 +25,7 @@ public class TemplateController {
 
         model.addAttribute("user", user);
 
-        PinboardApi api = new PinboardApi();
+        PinboardApi api = new PinboardApi(pinboardRootUrl);
 
         List<Post> posts = api.getPosts(user, token, tag);
         posts.sort((a,b) -> (a.getDescription().compareToIgnoreCase(b.getDescription())) );
